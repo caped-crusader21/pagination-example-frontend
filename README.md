@@ -1,7 +1,7 @@
 
 # 📄 Pagination Example (React)
 
-A simple React app showcasing client-side pagination with a responsive 2×2 grid layout.
+A simple React app showcasing client-side pagination
 
 ---
 
