@@ -1,6 +1,3 @@
-Sure! Here's a concise and professional version of the README:
-
----
 
 # 📄 Pagination Example (React)
 
