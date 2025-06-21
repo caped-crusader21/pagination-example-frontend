@@ -5,7 +5,7 @@ import Pagination from "./pagination";
 function App() {
   const [post, setPost] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(4);
+  const [postPerPage, setPostPerPage] = useState(10);
   useEffect(() => {
     const getPost = async () => {
       try {
