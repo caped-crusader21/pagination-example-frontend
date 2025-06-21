@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
+  const [post, setPost] = useState([]);
+  const [currentPage,setCurrentPage]=useState(1);
+  const [postPerPage,setPostPerPage]=useState(4);
+  useEffect(() => {
+    const getPost = async () => {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
+        const data = await response.json();
+        setPost(data);
+      } catch (error) {
+        console.log(`Fetch error: ${error}`);
+      }
+    };
+    getPost();
+  }, []);
+
+  const last=postPerPage*currentPage;
+  const start=last-postPerPage;
+  const currentPost=post.slice(start,last);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {currentPost.map((itr)=>(
+        <div className="main-container">
+          <h3>{itr.id} : {itr.title}</h3> 
+          <p>{itr.body}</p>
+        </div>
+      ))}
     </div>
-  );
+  )
 }
 
 export default App;
