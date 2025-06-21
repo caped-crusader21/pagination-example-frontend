@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import Pagination from "./pagination";
 
 function App() {
   const [post, setPost] = useState([]);
-  const [currentPage,setCurrentPage]=useState(1);
-  const [postPerPage,setPostPerPage]=useState(4);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(4);
   useEffect(() => {
     const getPost = async () => {
       try {
@@ -20,19 +21,23 @@ function App() {
     getPost();
   }, []);
 
-  const last=postPerPage*currentPage;
-  const start=last-postPerPage;
-  const currentPost=post.slice(start,last);
+  const last = postPerPage * currentPage;
+  const start = last - postPerPage;
+  const currentPost = post.slice(start, last);
   return (
-    <div>
-      {currentPost.map((itr)=>(
+    <div className="grid-container">
+      <h1>Content Pagination Demo</h1>
+      {currentPost.map((itr) => (
         <div className="main-container">
-          <h3>{itr.id} : {itr.title}</h3> 
+          <h3>
+            {itr.id} : {itr.title}
+          </h3>
           <p>{itr.body}</p>
         </div>
       ))}
+      <Pagination totalPage={post.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage} />
     </div>
-  )
+  );
 }
 
 export default App;
