@@ -1,7 +1,7 @@
 
 # 📄 Pagination Example (React)
 
-A simple React app showcasing client-side pagination
+A simple React app showcasing client-side pagination for improved performance by loading in subsets.
 
 ---
 
